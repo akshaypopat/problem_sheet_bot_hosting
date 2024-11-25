@@ -207,8 +207,7 @@ async def log(interaction: discord.Interaction, week: int, module: str, progress
         return
 
     update_progress(interaction.user.id, week, module, progress)
-    await interaction.response.send_message(f"Progress updated for {interaction.user.name}:
-                                             Week {week}, {module}, +{progress}%!")
+    await interaction.response.send_message(f"Progress updated for {interaction.user.name}: Week {week}, {module}, +{progress}%!")
 
 @log.autocomplete('module')
 async def module_autocomplete(interaction: discord.Interaction, current: str):
