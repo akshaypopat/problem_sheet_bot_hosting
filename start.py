@@ -194,7 +194,7 @@ async def export(ctx, weeks: str, modules: str = None):
         print(f"Error exporting progress: {e}")
         await ctx.send("Failed to export progress. Please try again.")
 
-@bot.tree.command(name="log")
+@bot.tree.command(name="log", description="Log your progress on a problem sheet")
 @app_commands.describe(
     week="The week number (e.g., 1, 2, 3)",
     module="The module you're working on (choose from options)",
@@ -207,7 +207,8 @@ async def log(interaction: discord.Interaction, week: int, module: str, progress
         return
 
     update_progress(interaction.user.id, week, module, progress)
-    await interaction.response.send_message(f"Progress updated for {interaction.user.name}: Week {week}, {module}, +{progress}%!")
+    await interaction.response.send_message(f"Progress updated for {interaction.user.name}:
+                                             Week {week}, {module}, +{progress}%!")
 
 @log.autocomplete('module')
 async def module_autocomplete(interaction: discord.Interaction, current: str):
@@ -216,7 +217,7 @@ async def module_autocomplete(interaction: discord.Interaction, current: str):
         for module in modules if current.lower() in module.lower()
     ]
 
-@bot.tree.command(name="leaderboard")
+@bot.tree.command(name="leaderboard", description="See the problem sheet leaderboards")
 @app_commands.describe(
     week="The week number (e.g., 1, 2, 3)",
     module="The module to filter by (choose from options)"
