@@ -179,7 +179,7 @@ def generate_html_table(user_id, weeks, selected_modules):
 
 async def save_periodically():
     while True:
-        await asyncio.sleep(600)  # Wait for 10 minutes
+        await asyncio.sleep(86400)  # Wait for 24 hours
         save_progress_data()  # Save data
         try:
             save_to_dropbox("progress_data.json", "/progress_data.json", db_token)
